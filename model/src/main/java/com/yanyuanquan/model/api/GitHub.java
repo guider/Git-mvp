@@ -1,4 +1,4 @@
-package com.yanyuanquan.model;
+package com.yanyuanquan.model.api;
 
 import com.yanyuanquan.android.automvp.model.BaseModel;
 

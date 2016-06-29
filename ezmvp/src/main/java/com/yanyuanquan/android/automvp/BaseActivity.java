@@ -1,12 +1,10 @@
 package com.yanyuanquan.android.automvp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.yanyuanquan.android.automvp.presenter.BasePresenter;
 
@@ -19,12 +17,18 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         presenter = BasePresenter.getInstance(this.getClass());
+        init();
+        initData();
         initView();
-        Log.e("zjw"," onCreate   ");
+
     }
 
 
     protected abstract void initView();
+
+    protected abstract void initData();
+
+    protected abstract void init();
 
     protected abstract int getLayout();
 
@@ -44,9 +48,10 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
         presenter.onSave(outState);
+
     }
 
     @Override
@@ -64,6 +69,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        presenter.onResult(requestCode,resultCode,data);
+        presenter.onResult(requestCode, resultCode, data);
     }
 }

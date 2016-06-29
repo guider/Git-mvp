@@ -1,4 +1,4 @@
-package com.yanyuanquan.android.git_mvp;
+package com.yanyuanquan.android.git_mvp.ui.main;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.yanyuanquan.android.git_mvp.R;
 
 public class ActivityMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
