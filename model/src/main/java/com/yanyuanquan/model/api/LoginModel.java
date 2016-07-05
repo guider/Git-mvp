@@ -1,6 +1,6 @@
 package com.yanyuanquan.model.api;
 
-import com.yanyuanquan.android.automvp.model.BaseModel;
+import com.yanyuanquan.model.BaseModel;
 
 /**
  * Created by guider on 16/6/29.

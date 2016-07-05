@@ -18,9 +18,6 @@ public abstract class EzActivity<P extends EzPresenter> extends UtilActivity {
         setContentView(getLayout());
         presenter = EzPresenter.getInstance(this.getClass());
         presenter.onCreate(this,savedInstanceState);
-//        init();
-//        initData();
-//        initView();
 
     }
 
