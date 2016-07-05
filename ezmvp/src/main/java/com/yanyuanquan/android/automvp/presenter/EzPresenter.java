@@ -1,27 +1,62 @@
 package com.yanyuanquan.android.automvp.presenter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
-import com.yanyuanquan.android.automvp.model.BaseModel;
+import com.yanyuanquan.android.automvp.model.EzModel;
+import com.yanyuanquan.android.automvp.model.UtilModel;
 
 /**
- * Created by guider on 16/6/24.
- * Email guider@yeah.net
- * github https://github.com/guider
  */
-public class EzPresenter<V,M extends BaseModel> extends BasePresenter<V,M>{
+public class EzPresenter<V, M extends EzModel> extends UtilPresenter {
+    protected M model;
 
-    @Override
+    /**
+     * activity 第一次create直到到主动退出Activity之前都不会调用。
+     */
     public void onCreate(@NonNull V view, Bundle savedState) {
-        super.onCreate(view, savedState);
+        this.view = view;
+        model = UtilModel.getModelInstance(this.getClass());
+    }
+
+    /**
+     * presenter销毁时的回调。代表着activity正式退出
+     */
+    public void onDestroy() {
 
     }
 
-    @Override
+    /**
+     * activity$OnCreate的回调,但执行延迟到OnCreate之后。
+     */
     public void onPostCreate(@NonNull V view) {
-        super.onPostCreate(view);
 
+    }
+
+    public void onDestroyView() {
+    }
+
+    public void onResume() {
+    }
+
+    public void onPause() {
+    }
+
+    public void onSave(Bundle state) {
+    }
+
+    public void onResult(int requestCode, int resultCode, Intent data) {
+
+    }
+
+    String id;
+    protected V view;
+
+    @NonNull
+    public final V getView() {
+        return view;
     }
 
 

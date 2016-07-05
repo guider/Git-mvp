@@ -13,7 +13,7 @@ public class UtilPresenter {
 
 
     // 获取Presenter实例
-    public static <P extends BasePresenter> P getInstance(Class<?> clz) {
+    public static <P extends EzPresenter> P getInstance(Class<?> clz) {
         Presenter anno = clz.getAnnotation(Presenter.class);
         if (anno == null){
             throw  new IllegalArgumentException("  an activity or fragment need @Presenter");

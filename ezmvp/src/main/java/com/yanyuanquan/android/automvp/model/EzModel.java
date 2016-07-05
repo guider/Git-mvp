@@ -8,11 +8,11 @@ import android.content.Context;
  * github https://github.com/guider
  */
 
-public class BaseModel extends UtilModel {
+public class EzModel extends UtilModel {
 
     private Context context;
 
-    public static final <T extends BaseModel> T getInstance(Class<T> clz) {
+    public static final <T extends EzModel> T getInstance(Class<T> clz) {
         return getModel(clz);
 
     }

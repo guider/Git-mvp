@@ -11,9 +11,9 @@ import java.util.HashMap;
  */
 public class UtilModel {
 
-    protected static HashMap<Class<?>, BaseModel> modelSet = new HashMap<>();
+    protected static HashMap<Class<?>, EzModel> modelSet = new HashMap<>();
 
-    protected static <M extends BaseModel> M getModel(Class<?> clz) {
+    protected static <M extends EzModel> M getModel(Class<?> clz) {
         M model = (M) modelSet.get(clz);
         if (model == null) {
             model = createModel(clz);
@@ -21,8 +21,8 @@ public class UtilModel {
         return model;
     }
 
-    private static <M extends BaseModel> M createModel(Class<?> clz) {
-        if (clz == null || !BaseModel.class.isAssignableFrom(clz)) {
+    private static <M extends EzModel> M createModel(Class<?> clz) {
+        if (clz == null || !EzModel.class.isAssignableFrom(clz)) {
             throw new IllegalArgumentException("  model mast exten baseModel ");
         }
         try {
@@ -37,7 +37,8 @@ public class UtilModel {
         throw new IllegalArgumentException("  model mast exten baseModel ");
     }
 
-    public  static  <M extends BaseModel> M getModelInstance(Class<?> clz) {
+    public static <M extends EzModel> M getModelInstance(Class<?> clz) {
+
         Model model = clz.getAnnotation(Model.class);
         if (model != null) {
             try {

@@ -1,6 +1,6 @@
 package com.yanyuanquan.android.automvp.annotation;
 
-import com.yanyuanquan.android.automvp.presenter.BasePresenter;
+import com.yanyuanquan.android.automvp.presenter.EzPresenter;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -10,5 +10,5 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Presenter {
-    Class<? extends BasePresenter> value();
+    Class<? extends EzPresenter> value();
 }

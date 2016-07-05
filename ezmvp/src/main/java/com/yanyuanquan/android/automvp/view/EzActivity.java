@@ -1,4 +1,4 @@
-package com.yanyuanquan.android.automvp;
+package com.yanyuanquan.android.automvp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,29 +6,24 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.yanyuanquan.android.automvp.presenter.BasePresenter;
+import com.yanyuanquan.android.automvp.presenter.EzPresenter;
 
 
-public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity {
+public abstract class EzActivity<P extends EzPresenter> extends UtilActivity {
     protected P presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        presenter = BasePresenter.getInstance(this.getClass());
-        init();
-        initData();
-        initView();
+        presenter = EzPresenter.getInstance(this.getClass());
+        presenter.onCreate(this,savedInstanceState);
+//        init();
+//        initData();
+//        initView();
 
     }
 
-
-    protected abstract void initView();
-
-    protected abstract void initData();
-
-    protected abstract void init();
 
     protected abstract int getLayout();
 
