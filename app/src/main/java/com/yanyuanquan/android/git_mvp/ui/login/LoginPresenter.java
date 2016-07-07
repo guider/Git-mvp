@@ -13,7 +13,7 @@ import com.yanyuanquan.model.api.LoginModel;
  * github https://github.com/guider
  */
 @Model(LoginModel.class)
-public class LoginPresenter extends BasePresenter<ActivityLogin, LoginModel> {
+public class LoginPresenter extends BasePresenter <ActivityLogin, LoginModel> {
 
     @Override
     public void onCreate(@NonNull ActivityLogin view, Bundle savedState) {
