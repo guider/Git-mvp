@@ -5,5 +5,5 @@ package com.yanyuanquan.android.automvp.annotation;
  * Email guider@yeah.net
  * github https://github.com/guider
  */
-public class Topbar2 {
+public class Topbar2  {
 }
