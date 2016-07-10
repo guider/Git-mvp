@@ -5,5 +5,10 @@ package com.yanyuanquan.android.automvp.annotation;
  * Email guider@yeah.net
  * github https://github.com/guider
  */
-public class Topbar2  {
+public @interface Topbar2  {
+    int cancelId() default 0;
+    int value() default 0;
+    int confirm() default 0;
+    boolean visiable() default true;
+
 }

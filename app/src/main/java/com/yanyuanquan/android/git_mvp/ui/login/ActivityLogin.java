@@ -17,4 +17,19 @@ public class ActivityLogin  extends BaseActivity<LoginPresenter> {
     protected int getLayout() {
         return R.layout.activity_login;
     }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void init() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
 }
