@@ -1,29 +1,78 @@
 package com.yanyuanquan.android.git_mvp.base;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.yanyuanquan.android.automvp.App;
 import com.yanyuanquan.android.automvp.presenter.EzPresenter;
 import com.yanyuanquan.android.automvp.view.EzActivity;
+import com.yanyuanquan.android.git_mvp.ui.main.ActivityMain;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by guider on 16/7/5.
  * Email guider@yeah.net
  * github https://github.com/guider
  */
-public  abstract class BaseActivity<P extends EzPresenter> extends EzActivity<P> {
+public abstract class BaseActivity<P extends EzPresenter> extends BaseUtilActivity<P> {
+
+
+    public void showTopToast(String msg) {
+        showTopToast(msg, Toast.LENGTH_LONG);
+    }
+
+    public void showTopToast(String msg, int duration) {
+
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        App.setCurrentActivity(null);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        App.setCurrentActivity(this);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        ButterKnife.bind(this);
         init();
+        initTopbar();
         initData();
         initView();
     }
 
+    protected void initTopbar() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+        App.getHandler().removeCallbacksAndMessages(null);
+    }
+
+
     protected abstract void initView();
+
+    protected abstract void initData();
 
     protected abstract void init();
 
-    protected abstract void initData();
 }
