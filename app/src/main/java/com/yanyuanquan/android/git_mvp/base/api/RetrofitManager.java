@@ -3,7 +3,7 @@ package com.yanyuanquan.android.git_mvp.base.api;
 import android.text.TextUtils;
 
 import com.android.guider.util.NetUtil;
-import com.yanyuanquan.android.automvp.App;
+import com.yanyuanquan.android.git_mvp.App;
 
 import java.io.File;
 import java.io.IOException;

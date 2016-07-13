@@ -1,19 +1,10 @@
 package com.yanyuanquan.android.git_mvp.base;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.yanyuanquan.android.automvp.App;
 import com.yanyuanquan.android.automvp.presenter.EzPresenter;
-import com.yanyuanquan.android.automvp.view.EzActivity;
-import com.yanyuanquan.android.git_mvp.ui.main.ActivityMain;
+import com.yanyuanquan.android.git_mvp.App;
 
 import butterknife.ButterKnife;
 
