@@ -1,5 +1,6 @@
 package com.yanyuanquan.android.automvp.annotation;
 
+import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -8,6 +9,7 @@ import java.lang.annotation.RetentionPolicy;
  * Email guider@yeah.net
  * github https://github.com/guider
  */
+@Inherited
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Topbar {
     int cancelId() default 0;
