@@ -1,1 +1,1 @@
-include ':app', ':model', ':ezmvp'
+include ':app', ':model', ':ezmvp', ':devhelper'

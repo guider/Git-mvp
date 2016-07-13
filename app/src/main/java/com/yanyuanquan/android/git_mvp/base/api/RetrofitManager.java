@@ -1,4 +1,4 @@
-package com.yanyuanquan.android.automvp.api;
+package com.yanyuanquan.android.git_mvp.base.api;
 
 import android.text.TextUtils;
 

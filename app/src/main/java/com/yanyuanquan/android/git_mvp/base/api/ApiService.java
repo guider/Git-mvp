@@ -1,4 +1,4 @@
-package com.yanyuanquan.android.automvp.api;
+package com.yanyuanquan.android.git_mvp.base.api;
 
 /**
  * Created by guider on 16/7/13.
