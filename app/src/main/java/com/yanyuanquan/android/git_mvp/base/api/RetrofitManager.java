@@ -2,6 +2,7 @@ package com.yanyuanquan.android.git_mvp.base.api;
 
 import android.text.TextUtils;
 
+import com.android.guider.util.NetUtil;
 import com.yanyuanquan.android.automvp.App;
 
 import java.io.File;
@@ -64,7 +65,7 @@ public class RetrofitManager {
     }
 
     public OkHttpClient getHttpClient() {
-        File cacheFile = new File(App.getApp().getExternalCacheDir(), "yyq_json");
+        File cacheFile = new File(App.getApp().getExternalCacheDir(), "github-mvp");
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .cache(new Cache(cacheFile, 10 * 1024 * 1024))
                 .addInterceptor(LOG_INTERCEPTOR)
