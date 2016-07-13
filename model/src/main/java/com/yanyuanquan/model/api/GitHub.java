@@ -11,9 +11,5 @@ import com.yanyuanquan.model.BaseModel;
 public class GitHub extends BaseModel {
 
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
 
-    }
 }
