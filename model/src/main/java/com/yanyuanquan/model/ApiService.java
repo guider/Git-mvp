@@ -1,11 +1,11 @@
 package com.yanyuanquan.model;
 
+import com.yanyuanquan.model.api.Token;
 import com.yanyuanquan.model.entity.Branch;
 import com.yanyuanquan.model.entity.Empty;
 import com.yanyuanquan.model.entity.Event;
 import com.yanyuanquan.model.entity.RepoSearch;
 import com.yanyuanquan.model.entity.Repository;
-import com.yanyuanquan.model.entity.Token;
 import com.yanyuanquan.model.entity.Tree;
 import com.yanyuanquan.model.entity.User;
 import com.yanyuanquan.model.entity.UserSearch;

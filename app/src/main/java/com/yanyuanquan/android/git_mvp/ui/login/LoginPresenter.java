@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.yanyuanquan.android.automvp.annotation.Model;
+import com.yanyuanquan.android.git_mvp.mode.LoginModel;
 import com.yanyuanquan.model.BasePresenter;
-import com.yanyuanquan.model.api.LoginModel;
 
 /**
  * Created by guider on 16/6/29.

@@ -1,1 +1,1 @@
-include ':app', ':model', ':ezmvp', ':devhelper'
+include ':app', ':model', ':ezmvp', ':devhelper', ':iosdialog'
