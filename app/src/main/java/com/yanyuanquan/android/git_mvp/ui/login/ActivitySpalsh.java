@@ -5,8 +5,11 @@ import android.widget.EditText;
 
 import com.android.guider.util.TextVerify;
 import com.yanyuanquan.android.automvp.annotation.Presenter;
+import com.yanyuanquan.android.git_mvp.App;
 import com.yanyuanquan.android.git_mvp.R;
 import com.yanyuanquan.android.git_mvp.base.BaseActivity;
+import com.yanyuanquan.android.git_mvp.ui.main.ActivityMain;
+import com.yanyuanquan.android.git_mvp.widget.LoginManager;
 
 import org.w3c.dom.Text;
 
@@ -29,7 +32,21 @@ public class ActivitySpalsh extends BaseActivity<SplashPresenter> {
 
     @Override
     protected void initView() {
-        App.getApp.postDelay(,1000);
+        App.getHandler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (LoginManager.isLogin()) {
+                    intent2Activity(ActivityMain.class);
+                } else {
+                    registerAnim();
+                }
+            }
+        }, 1000);
+    }
+
+    private void registerAnim() {
+
+
     }
 
     @Override
@@ -49,16 +66,16 @@ public class ActivitySpalsh extends BaseActivity<SplashPresenter> {
 
     @OnClick(R.id.login)
     public void onClick() {
-        String userName,passWord;
-        if (!TextVerify.isUserName(userName = username.getText().toString().trim())){
+        String userName, passWord;
+        if (!TextVerify.isUserName(userName = username.getText().toString().trim())) {
             showTopToast("请输入正确的用户名");
             return;
         }
-        if (!TextVerify.isPassWord(passWord = password.getText().toString().trim())){
+        if (!TextVerify.isPassWord(passWord = password.getText().toString().trim())) {
             showTopToast("请输入正确的密码");
             return;
         }
-        presenter.login(userName,passWord);
+        presenter.login(userName, passWord);
 
 
     }

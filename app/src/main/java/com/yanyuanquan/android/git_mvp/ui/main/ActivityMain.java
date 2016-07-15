@@ -13,8 +13,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.yanyuanquan.android.automvp.annotation.Presenter;
+import com.yanyuanquan.android.automvp.annotation.Topbar;
 import com.yanyuanquan.android.git_mvp.R;
+import com.yanyuanquan.android.git_mvp.base.BaseActivity;
 
-public class ActivityMain extends AppCompatActivity {
+@Presenter(MainPresenter.class)
+public class ActivityMain extends BaseActivity<MainPresenter> {
 
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void init() {
+
+    }
+
+    @Override
+    protected int getLayout() {
+        return 0;
+    }
 }

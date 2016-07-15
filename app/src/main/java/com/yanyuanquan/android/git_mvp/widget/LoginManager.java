@@ -5,49 +5,43 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.yanyuanquan.model.entity.Account;
 
+import java.util.List;
+
 /**
  * Created by apple on 16/7/7.
  */
 public class LoginManager {
     public static final String KEY_ACCOUNT = "key_account";
-    public static final String KEY_AID = "key_aid";
-    public static final String KEY_USR = "key_usr";
-    public static final String KEY_UTP = "key_utp";
-    public static final String KEY_ATV = "key_atv";
-    public static final String KEY_USET = "key_uset";
-    public static final String KEY_EML = "key_eml";
-    public static final String KEY_ESET = "key_eset";
-    public static final String KEY_PN = "key_pn";
-    public static final String KEY_ZN = "key_zn";
-    public static final String KEY_SYNC = "key_sync";
-    public static final String KEY_LOCK = "key_lock";
-    public static final String KEY_REGI = "key_regi";
-    public static final String KEY_ATK = "key_atk";
-
+    public static String KEY_ID = "id";
+    public static String KEY_URL = "url";
+    public static String KEY_TOKEN = "token";
+    public static String KEY_HASHED_TOKEN = "hashed_token";
+    public static String KEY_TOKEN_LAST_EIGHT = "token_eight";
+    public static String KEY_NOTE = "note";
+    public static String KEY_NOTE_URL = "note_utrl";
+    public static String KEY_CREATED_AT = "creatr_at";
+    public static String KEY_UPDATED_AT = "update_at";
+    public static String kEY_FINDGERPRINT = "findgerprint";
+    public static String KEY_SCOPES = "scopes";
 
     public static void save(Account account) {
         if (account != null) {
-//            Gson gson = new Gson();
-//            SP.save(KEY_ACCOUNT, gson.toJson(account));
-//            Account.AccountEntity aEntity = account.getAccount();
-//            if (aEntity != null) {
-//                SP.save(KEY_AID, String.valueOf(aEntity.getAid()));
-//                SP.save(KEY_USR, String.valueOf(aEntity.getUsr()));
-//                SP.save(KEY_UTP, String.valueOf(aEntity.getUtp()));
-//                SP.save(KEY_ATV, String.valueOf(aEntity.getAtv()));
-//                SP.save(KEY_USET, String.valueOf(aEntity.getUset()));
-//                SP.save(KEY_EML, String.valueOf(aEntity.getEml()));
-//                SP.save(KEY_ESET, String.valueOf(aEntity.getEset()));
-//                SP.save(KEY_PN, String.valueOf(aEntity.getPn()));
-//                SP.save(KEY_ZN, String.valueOf(aEntity.getZn()));
-//                SP.save(KEY_SYNC, String.valueOf(aEntity.getSync()));
-//                SP.save(KEY_ATK, String.valueOf(aEntity.getAtk()));
-//            }
-//            Account.BrokerRegiEntity bEntity = account.getBrokerRegi();
-//            if (bEntity != null) {
-//                SP.save(KEY_LOCK, String.valueOf(bEntity.getLock()));
-//                SP.save(KEY_REGI, String.valueOf(gson.toJson(bEntity.getRegi())));
-//            }
+            Gson gson = new Gson();
+            SP.save(KEY_ACCOUNT, gson.toJson(account));
+            if (account != null) {
+                SP.save(KEY_ID, String.valueOf(account.getId()));
+                SP.save(KEY_URL, String.valueOf(account.getUrl()));
+                SP.save(KEY_TOKEN, String.valueOf(account.getToken()));
+                SP.save(KEY_HASHED_TOKEN, String.valueOf(account.getHashed_token()));
+                SP.save(KEY_TOKEN_LAST_EIGHT, String.valueOf(account.getToken_last_eight()));
+                SP.save(KEY_NOTE, String.valueOf(account.getNote()));
+                SP.save(KEY_NOTE_URL,account.getNote_url().toString());
+                SP.save(KEY_CREATED_AT, String.valueOf(account.getCreated_at()));
+                SP.save(KEY_UPDATED_AT, String.valueOf(account.getUpdated_at()));
+                SP.save(kEY_FINDGERPRINT, String.valueOf(account.getFingerprint()));
+                SP.save(KEY_SCOPES, String.valueOf(account.getScopes()));
+            }
+
         }
     }
 
@@ -57,12 +51,11 @@ public class LoginManager {
 
 
     public static boolean isLogin() {
-        return ((!TextUtils.isEmpty(getOneKey(KEY_AID)) && !TextUtils.isEmpty(getOneKey(KEY_ATK))));
+        return ((!TextUtils.isEmpty(getOneKey(KEY_HASHED_TOKEN))));
     }
 
     public static void logout() {
-        SP.save(KEY_AID, "");
-        SP.save(KEY_ATK, "");
+        SP.save(KEY_HASHED_TOKEN, "");
     }
 
     public static void save(String key, String value) {
