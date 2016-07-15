@@ -6,6 +6,8 @@ import com.yanyuanquan.android.automvp.annotation.Model;
 import com.yanyuanquan.android.git_mvp.base.expand.BasePresenter;
 import com.yanyuanquan.android.git_mvp.base.widget.LoadingSubscriber;
 import com.yanyuanquan.android.git_mvp.mode.LoginModel;
+import com.yanyuanquan.android.git_mvp.widget.LoginManager;
+import com.yanyuanquan.android.git_mvp.widget.SP;
 import com.yanyuanquan.model.entity.Account;
 
 /**
@@ -22,7 +24,7 @@ public class SplashPresenter extends BasePresenter<ActivitySpalsh, LoginModel, O
     LoadingSubscriber.OnNextListener<Account> listener = new LoadingSubscriber.OnNextListener<Account>() {
         @Override
         public void onLoadSuccess(Account account) {
-            SP.save(account);
+            LoginManager.save(account);
         }
     };
 }
