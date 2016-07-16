@@ -87,7 +87,7 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements Navigat
                 viewPager.setOffscreenPageLimit(3);
                 adapter.addFragment(EventFragment.getInstance(), "Events");
                 adapter.addFragment(StarredFragment.getInstance(), "Starred");
-                adapter.addFragment(UserFragment.getInstance(loginUser), "Repository");
+                adapter.addFragment(UserFragment.getInstance(), "Repository");
                 adapter.notifyDataSetChanged();
                 tabLayout.setupWithViewPager(viewPager);
 
@@ -95,8 +95,8 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements Navigat
             case R.id.nav_friends:
                 adapter.clear();
                 viewPager.setOffscreenPageLimit(2);
-                adapter.addFragment(FollowerFragment.getInstance(""), "Follower");
-                adapter.addFragment(FollowingFragment.getInstance(""), "Following");
+                adapter.addFragment(FollowerFragment.getInstance(), "Follower");
+                adapter.addFragment(FollowingFragment.getInstance(), "Following");
                 adapter.notifyDataSetChanged();
                 tabLayout.setupWithViewPager(viewPager);
                 break;

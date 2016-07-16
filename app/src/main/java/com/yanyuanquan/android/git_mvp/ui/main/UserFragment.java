@@ -1,6 +1,5 @@
 package com.yanyuanquan.android.git_mvp.ui.main;
 
-
 import android.support.v4.app.Fragment;
 
 import com.yanyuanquan.android.automvp.annotation.Presenter;
@@ -11,10 +10,9 @@ import com.yanyuanquan.android.git_mvp.base.BaseFragment;
  * Email guider@yeah.net
  * github https://github.com/guider
  */
-@Presenter(StarredPresenter.class)
-public class StarredFragment extends BaseFragment<StarredPresenter> {
-
-    public static StarredFragment getInstance() {
+@Presenter(UserPresenter.class)
+public class UserFragment extends BaseFragment<UserPresenter> {
+    public static UserFragment getInstance() {
         return null;
     }
 

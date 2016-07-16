@@ -9,6 +9,5 @@ import com.yanyuanquan.android.automvp.presenter.EzPresenter;
  * Email guider@yeah.net
  * github https://github.com/guider
  */
-@Model(MainModel.class)
-public class StarredPresenter extends EzPresenter {
+public class StarredPresenter extends BaseMainPresenter<StarredFragment> {
 }
