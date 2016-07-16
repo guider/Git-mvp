@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_friends"
+            android:icon="@mipmap/friends"
+            android:title="Friends" />
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@mipmap/search"
+            android:title="Search" />
+    </group>
+
+    <item android:title="More">
+        <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@mipmap/ic_action_setting"
+                android:title="Setting" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@mipmap/ic_action_about"
+                android:title="About" />
+        </menu>
+    </item>
+
 </menu>

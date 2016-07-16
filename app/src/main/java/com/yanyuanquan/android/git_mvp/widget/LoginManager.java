@@ -35,7 +35,7 @@ public class LoginManager {
                 SP.save(KEY_HASHED_TOKEN, String.valueOf(account.getHashed_token()));
                 SP.save(KEY_TOKEN_LAST_EIGHT, String.valueOf(account.getToken_last_eight()));
                 SP.save(KEY_NOTE, String.valueOf(account.getNote()));
-                SP.save(KEY_NOTE_URL,account.getNote_url().toString());
+                SP.save(KEY_NOTE_URL,String.valueOf(account.getNote_url()));
                 SP.save(KEY_CREATED_AT, String.valueOf(account.getCreated_at()));
                 SP.save(KEY_UPDATED_AT, String.valueOf(account.getUpdated_at()));
                 SP.save(kEY_FINDGERPRINT, String.valueOf(account.getFingerprint()));
