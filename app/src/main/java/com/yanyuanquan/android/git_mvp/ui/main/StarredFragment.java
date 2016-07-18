@@ -1,8 +1,6 @@
 package com.yanyuanquan.android.git_mvp.ui.main;
 
 
-import android.support.v4.app.Fragment;
-
 import com.yanyuanquan.android.automvp.annotation.Presenter;
 import com.yanyuanquan.android.git_mvp.base.BaseFragment;
 

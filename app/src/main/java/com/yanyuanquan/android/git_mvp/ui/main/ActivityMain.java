@@ -11,11 +11,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.android.guider.util.L;
 import com.yanyuanquan.android.automvp.annotation.Presenter;
 import com.yanyuanquan.android.git_mvp.R;
 import com.yanyuanquan.android.git_mvp.base.BaseActivity;
 import com.yanyuanquan.android.git_mvp.ui.main.adapter.MainPagerAdapter;
+import com.yanyuanquan.android.git_mvp.ui.main.widget.MainFragmentManager;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,26 +30,19 @@ import butterknife.ButterKnife;
  * github https://github.com/guider
  */
 @Presenter(MainPresenter.class)
-public class ActivityMain extends BaseActivity<MainPresenter> implements NavigationView.OnNavigationItemSelectedListener {
+public class ActivityMain extends BaseActivity<MainPresenter> implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener {
     @Bind(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-    @Bind(R.id.main_content)
-    CoordinatorLayout coordinatorLayout;
-    @Bind(R.id.appbar)
-    AppBarLayout appBarLayout;
-    @Bind(R.id.toolbar_main)
-    Toolbar toolbar;
-    @Bind(R.id.tab_layout)
-    TabLayout tabLayout;
-    @Bind(R.id.viewpager)
-    ViewPager viewPager;
     @Bind(R.id.nav_view)
     NavigationView navigationView;
-    MainPagerAdapter adapter;
+
+    MainFragmentManager manager;
 
     @Override
     protected void initView() {
-        setTab(R.id.nav_home);
+        manager = MainFragmentManager.getInstance(this, R.id.container);
+        manager.showFrgament(0);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -56,16 +52,6 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements Navigat
 
     @Override
     protected void init() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawerLayout, toolbar, R.string.app_name,
-                R.string.app_name);
-        toggle.syncState();
-        drawerLayout.addDrawerListener(toggle);
-
-        navigationView.setNavigationItemSelectedListener(this);
 
     }
 
@@ -76,38 +62,36 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements Navigat
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        return true;
-    }
-
-    public void setTab(int id) {
-
-        switch (id) {
+        drawerLayout.closeDrawers();
+        switch (item.getItemId()) {
             case R.id.nav_home:
-                adapter.clear();
-                viewPager.setOffscreenPageLimit(3);
-                adapter.addFragment(EventFragment.getInstance(), "Events");
-                adapter.addFragment(StarredFragment.getInstance(), "Starred");
-                adapter.addFragment(UserFragment.getInstance(), "Repository");
-                adapter.notifyDataSetChanged();
-                tabLayout.setupWithViewPager(viewPager);
+                manager.showFrgament(0);
 
                 break;
             case R.id.nav_friends:
-                adapter.clear();
-                viewPager.setOffscreenPageLimit(2);
-                adapter.addFragment(FollowerFragment.getInstance(), "Follower");
-                adapter.addFragment(FollowingFragment.getInstance(), "Following");
-                adapter.notifyDataSetChanged();
-                tabLayout.setupWithViewPager(viewPager);
-                break;
-            case R.id.nav_search: {
-                break;
-            }
-            case R.id.nav_setting:
-                return;
-            case R.id.nav_about:
+                manager.showFrgament(1);
                 break;
         }
+        return true;
+    }
+
+    @Override
+    public void onDrawerSlide(View drawerView, float slideOffset) {
+
+    }
+
+    @Override
+    public void onDrawerOpened(View drawerView) {
+
+    }
+
+    @Override
+    public void onDrawerClosed(View drawerView) {
+
+    }
+
+    @Override
+    public void onDrawerStateChanged(int newState) {
 
     }
 }

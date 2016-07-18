@@ -10,7 +10,7 @@ import com.yanyuanquan.android.git_mvp.base.BaseFragment;
  * github https://github.com/guider
  */
 @Presenter(EventPresenter.class)
-public class EventFragment  extends BaseFragment<EventPresenter>{
+public class EventFragment  extends BaseFragment<EventPresenter> {
 
     public static EventFragment getInstance() {
         return null;

@@ -20,23 +20,21 @@ public abstract class EzFragment<P extends EzPresenter> extends UtilFragment {
 
     protected P presenter;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         presenter = UtilPresenter.getInstance(this.getClass());
         presenter.onCreate(this,savedInstanceState);
-        return super.onCreateView(inflater,container,savedInstanceState);
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         presenter.onPostCreate(this);
         init();
         initData();
         initView();
     }
-
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
