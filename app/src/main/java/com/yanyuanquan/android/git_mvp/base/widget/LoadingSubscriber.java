@@ -5,6 +5,10 @@ import android.content.Context;
 import com.android.guider.iosdialog.IOSProgressDialog;
 import com.android.guider.util.L;
 import com.yanyuanquan.android.git_mvp.App;
+import com.yanyuanquan.android.git_mvp.ui.main.home.HomeFragment;
+import com.yanyuanquan.model.entity.Repository;
+
+import java.util.List;
 
 import rx.Subscriber;
 import rx.subjects.BehaviorSubject;
@@ -17,7 +21,7 @@ public class LoadingSubscriber<T> extends Subscriber<T> {
     private BehaviorSubject<T> data;
     private OnNextListener listener;
 
-    public LoadingSubscriber(Context context, OnNextListener listener) {
+    public LoadingSubscriber(Context context, OnNextListener<T> listener) {
         dialog = new IOSProgressDialog(context);
         this.listener = listener;
     }
@@ -27,7 +31,6 @@ public class LoadingSubscriber<T> extends Subscriber<T> {
         this.data = data;
         this.listener = listener;
     }
-
 
     @Override
     public void onStart() {
@@ -49,15 +52,15 @@ public class LoadingSubscriber<T> extends Subscriber<T> {
         if (data != null)
             data.onError(e);
         hide();
-        L.e("  http  error   --- >>  " +  e.toString());
+        L.e("  http  error   --- >>  " + e.toString());
     }
 
     @Override
     public void onNext(T t) {
-        L.e("  http  success  TTTT --- >>  " +  t);
+        L.e("  http  success  TTTT --- >>  " + t);
         if (data != null) {
             data.onNext(t);
-            L.e("  http  success   --- >>  " +  t.toString());
+            L.e("  http  success   --- >>  " + t.toString());
         }
         if (listener != null) {
             if (t != null) {

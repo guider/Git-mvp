@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.android.guider.util.L;
 import com.yanyuanquan.android.git_mvp.ui.main.home.LanguageFragment;
 
 import java.util.ArrayList;
@@ -32,8 +33,14 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
+    public CharSequence getPageTitle(int position) {
+        return titles.get(position);
+    }
+
+    @Override
     public Fragment getItem(int position) {
-        return LanguageFragment.getInstance(context, titles.get(position));
+        Fragment instance = LanguageFragment.getInstance(context, titles.get(position));
+        return instance;
     }
 
     @Override

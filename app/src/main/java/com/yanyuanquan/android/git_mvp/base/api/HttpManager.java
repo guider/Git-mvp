@@ -9,6 +9,7 @@ import com.yanyuanquan.android.git_mvp.base.widget.LoadingSubscriber;
 import com.yanyuanquan.android.git_mvp.widget.TopToast;
 import com.yanyuanquan.model.api.Token;
 import com.yanyuanquan.model.entity.Account;
+import com.yanyuanquan.model.entity.Repository;
 
 import junit.framework.Test;
 
@@ -40,7 +41,6 @@ public class HttpManager {
     private static final int HTTP_EXCEPTION_404 = 404;
 
 
-
 //
 //    public static Subscription resetPwd(LoadingSubscriber<Account> subscriber, ApiParams params) {
 //        Observable<WrapData<Account>> o = getService().resetPwd(params);
@@ -48,25 +48,24 @@ public class HttpManager {
 //    }
 
 
-
-    public static Subscription login(Token paramas,String OAuth, LoadingSubscriber<Account> subscriber) {
-        L.e("    OAuth     --- >>    " + OAuth  );
-
-        Observable<Account> o = getService().login(paramas,OAuth);
+    public static Subscription login(Token paramas, String OAuth, LoadingSubscriber<Account> subscriber) {
+        Observable<Account> o = getService().login(paramas, OAuth);
         return doSubscriber(subscriber, o);
     }
 
 
+    public static Subscription getLanguageList(String language, String since, Subscriber<List<Repository>> subscriber) {
 
+        Observable<List<Repository>> o = getService().getLanguageList(language, since);
+        return doSubscriberList(subscriber, o);
+    }
 
+    private static <T> Subscription doSubscriberList(Subscriber<List<T>> subscriber, Observable<List<T>> listObservable) {
+        return listObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .unsafeSubscribe(subscriber);
 
-
-
-
-
-
-
-
+    }
 
 
 //
@@ -136,7 +135,7 @@ public class HttpManager {
 //    }
 
 
-//
+    //
 //    private static <T> Subscription doMap(Subscriber<T> subscriber, Observable<WrapData<T>> o) {
 //        return o.map(new Func1<WrapData<T>, T>() {
 //            @Override
@@ -181,6 +180,7 @@ public class HttpManager {
 
     }
 
+
 //    public static Observable<WrapData<List<Test>>> getLists(boolean key) {
 ////        if (key) {
 ////            return getService().getList(RetrofitManager.API_KEY, CACHE_CONTROL_CACHE);
@@ -190,7 +190,6 @@ public class HttpManager {
 //
 //        return null;
 //    }
-
 
 
 //    private static <T> void doMap(Subscriber<List<T>> subscriber, Observable<WrapData<List<T>>> observable) {

@@ -94,4 +94,10 @@ public class ActivityMain extends BaseActivity<MainPresenter> implements Navigat
     public void onDrawerStateChanged(int newState) {
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        manager.onDestory();
+    }
 }

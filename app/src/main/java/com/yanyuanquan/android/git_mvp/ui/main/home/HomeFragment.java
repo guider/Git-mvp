@@ -34,12 +34,13 @@ public class HomeFragment extends BaseFragment<HomePresenter> {
     ViewPager viewpager;
     @Bind(R.id.main_content)
     CoordinatorLayout mainContent;
-    String[] lanaguesName = new String[]{"Java", "JavaScript", "Go", "CSS", "Objective-C", "Python", "Swift", "HTML"};
+    String[] lanaguesName = new String[]{"java", "javascript", "go", "css", "objective-c", "python", "swift", "html"};
     HomePagerAdapter adapter;
 
     @Override
     protected void initView() {
-
+        viewpager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewpager);
     }
 
     @Override

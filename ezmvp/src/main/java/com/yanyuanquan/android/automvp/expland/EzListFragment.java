@@ -28,18 +28,20 @@ import com.yanyuanquan.android.automvp.widget.SwipeRefreshLayoutCompat;
  * Email guider@yeah.net
  * github https://github.com/guider
  */
-public abstract class EzListFragment<P extends EzPresenter,D> extends EzFragment<P>
-        implements EzListView.onLoadMoreLinstener,SwipeRefreshLayoutCompat.OnRefreshListener {
+public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragment<P>
+        implements EzListView.onLoadMoreLinstener, SwipeRefreshLayoutCompat.OnRefreshListener {
 
     private EzListView listView;
     private SwipeRefreshLayoutCompat swipeRefreshLayout;
     private View emptyView;
     protected EzAdapter<D> adapter;
     private View errorView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        LinearLayout errView = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.layout_error_view, null);
+        FrameLayout root = new FrameLayout(getActivity());
+        View errView = LayoutInflater.from(getActivity()).inflate(R.layout.layout_error_view, null);
         errView.setId(R.id.error_view);
         root.addView(errView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         errView.setVisibility(View.GONE);
@@ -67,7 +69,6 @@ public abstract class EzListFragment<P extends EzPresenter,D> extends EzFragment
         root.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return root;
     }
-    FrameLayout root = new FrameLayout(getActivity());
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -108,13 +109,6 @@ public abstract class EzListFragment<P extends EzPresenter,D> extends EzFragment
     public abstract void initView();
 
     public abstract void initData();
-
-    @Override
-    public abstract void loadMore();
-
-    @Override
-    public abstract void onRefresh();
-
 
     protected void setRefreshComplete() {
         if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing())
