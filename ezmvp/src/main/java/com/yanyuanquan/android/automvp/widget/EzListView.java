@@ -12,7 +12,7 @@ import android.widget.ListView;
  */
 public class EzListView extends ListView implements AbsListView.OnScrollListener {
 
-    private boolean isLoading =false;
+    private boolean isLoading = false;
     private boolean hasMore = true;
 
     public EzListView(Context context) {
@@ -49,7 +49,19 @@ public class EzListView extends ListView implements AbsListView.OnScrollListener
         if (listener != null) {
             isLastItemVisible = (totalItemCount > 0) && view.getLastVisiblePosition() == totalItemCount - 1;
         }
+    }
 
+    public void setLoadMoreComplete() {
+        isLoading = false;
+    }
+
+    public void setLoadMoreComplete(boolean hasMore) {
+        isLoading = false;
+        this.hasMore = hasMore;
+    }
+
+    public void setHasMore(boolean hasMore) {
+        this.hasMore = hasMore;
     }
 
     public interface onLoadMoreLinstener {
@@ -60,10 +72,6 @@ public class EzListView extends ListView implements AbsListView.OnScrollListener
 
     public void setOnLoadMoreLinstener(onLoadMoreLinstener linstener) {
         this.listener = linstener;
-    }
-
-    public void onLoadMoreComplete() {
-        isLoading = false;
     }
 
 }

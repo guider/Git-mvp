@@ -47,6 +47,10 @@ public class SwipeRefreshLayoutCompat extends SwipeRefreshLayout {
         return false;
     }
 
+    public void setChildView(View childView) {
+        this.childView = childView;
+    }
+
     @Override
     public boolean canChildScrollUp() {
         if (childView == null) {

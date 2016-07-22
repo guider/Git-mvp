@@ -78,8 +78,8 @@ public abstract class EzListFragment<P extends EzPresenter, D> extends EzFragmen
 
     protected void initSetting() {
         if (listView != null) {
-            listView.setDividerHeight(getDividerHeight());
             listView.setDivider(getResources().getDrawable(getDividerDrawableId()));
+            listView.setDividerHeight(getDividerHeight());
             listView.setEmptyView(emptyView);
         }
         swipeRefreshLayout.setCanRefresh(canRefresh());
