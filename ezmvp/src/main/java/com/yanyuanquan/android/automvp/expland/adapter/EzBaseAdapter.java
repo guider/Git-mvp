@@ -79,6 +79,12 @@ public abstract class EzBaseAdapter<D> extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    public void remove(D data) {
+        if (mDatas != null) {
+            mDatas.remove(data);
+        }
+    }
+
     public void appendBefore(List<D> datas) {
         if (datas == null)
             return;
