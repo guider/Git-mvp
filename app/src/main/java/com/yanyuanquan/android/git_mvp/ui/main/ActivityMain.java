@@ -23,7 +23,6 @@ import com.yanyuanquan.android.git_mvp.ui.main.widget.MainFragmentManager;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-
 /**
  * Created by guider on 16/7/14.
  * Email guider@yeah.net

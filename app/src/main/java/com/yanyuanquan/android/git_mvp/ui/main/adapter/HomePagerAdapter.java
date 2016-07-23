@@ -4,12 +4,14 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.SparseArray;
 
 import com.android.guider.util.L;
 import com.yanyuanquan.android.git_mvp.ui.main.home.LanguageFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,6 +22,8 @@ import java.util.List;
 public class HomePagerAdapter extends FragmentPagerAdapter {
     private List<String> titles;
     private Context context;
+    private SparseArray<Fragment> fragments = new SparseArray<>();
+
 
     public HomePagerAdapter(FragmentManager fm, String[] titles, Context context) {
         this(fm, Arrays.asList(titles), context);
@@ -39,7 +43,13 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Fragment instance = LanguageFragment.getInstance(context, titles.get(position));
+        Fragment instance;
+        if (fragments.get(position) == null) {
+            instance = LanguageFragment.getInstance(context, titles.get(position));
+            fragments.put(position, instance);
+        } else {
+            instance = fragments.get(position);
+        }
         return instance;
     }
 

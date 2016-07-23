@@ -9,6 +9,7 @@ import com.yanyuanquan.android.git_mvp.base.widget.LoadingSubscriber;
 import com.yanyuanquan.android.git_mvp.mode.HomeModel;
 import com.yanyuanquan.model.entity.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,9 +23,10 @@ public class LanguagePresenter extends BasePresenter<LanguageFragment, HomeModel
     @Override
     public void onPostCreate(@NonNull LanguageFragment view) {
         super.onPostCreate(view);
-        view.getArguments().getString(LanguageFragment.class.getName());
-        subscription = model.getLanguageList("java", "daily", new LoadingSubscriber<List<Repository>>(view.getActivity(), mData, listener));
+        String name = view.getArguments().getString(LanguageFragment.class.getName());
+        subscription = model.getLanguageList(name, "daily", new LoadingSubscriber<List<Repository>>(view.getActivity(), mData, listener));
     }
+
     private LoadingSubscriber.OnNextListener<List<Repository>> listener = new LoadingSubscriber.OnNextListener<List<Repository>>() {
         @Override
         public void onLoadSuccess(List<Repository> repositories) {
